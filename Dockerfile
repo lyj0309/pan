@@ -1,7 +1,5 @@
 FROM alpine
 
-ARG CLOUDREVE_VERSION="3.4.2"
-
 ENV PUID=1000
 ENV PGID=1000
 ENV TZ="Asia/Shanghai"
