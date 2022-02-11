@@ -23,4 +23,5 @@ RUN echo ">>>>>> update dependencies" \
 
 EXPOSE 5212
 
-ENTRYPOINT ["/app/cloudreve","-c","/app/config.ini"] 
+# ENTRYPOINT ["/app/cr","-c","/app/config.ini"] 
+ENTRYPOINT ["/app/cr"] 
