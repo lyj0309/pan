@@ -9,20 +9,17 @@ ENV TZ="Asia/Shanghai"
 LABEL MAINTAINER="lyj0309"
 
 WORKDIR /app
-ADD config.ini .
+# ADD config.ini .
+ADD cr .
 
-RUN zipName=cloudreve_${CLOUDREVE_VERSION}_linux_amd64.tar.gz \
-    && wget https://github.com/cloudreve/Cloudreve/releases/download/3.4.2/${zipName} \
-    && tar -xvf  ${zipName} \
-    && rm ${zipName} \
-    && echo ">>>>>> update dependencies" \
+RUN echo ">>>>>> update dependencies" \
     && apk update \
     && apk add tzdata gcompat\
     && echo ">>>>>> set up timezone" \
     && cp /usr/share/zoneinfo/${TZ} /etc/localtime \
     && echo ${TZ} > /etc/timezone \
-    && echo ">>>>>> fix cloudreve premission" \
-    && chmod +x /app/cloudreve
+    && echo ">>>>>> fix premission" \
+    && chmod +x /app/cr
 
 EXPOSE 5212
 
