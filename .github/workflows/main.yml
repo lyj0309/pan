@@ -27,8 +27,6 @@ jobs:
         #uses: actions/setup-node@v3.1.1
         
       - run: |
-          ls
-          rm cr
           downloadUrl=`curl https://api.github.com/repos/cloudreve/Cloudreve/releases/latest | grep -o 'https://github.com/cloudreve/Cloudreve/releases/download.*linux_amd64.tar.gz'`
           wget -q -O cr.tar.gz $downloadUrl
           tar -xvf cr.tar.gz
