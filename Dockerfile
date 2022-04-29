@@ -7,7 +7,7 @@ ENV TZ="Asia/Shanghai"
 LABEL MAINTAINER="lyj0309"
 
 WORKDIR /app
-# ADD config.ini .
+ADD config.ini .
 ADD cr .
 
 RUN echo ">>>>>> update dependencies" \
