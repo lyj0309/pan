@@ -22,7 +22,6 @@ jobs:
       - name: Setup railway cli
         run: |
           curl -fsSL https://railway.app/install.sh | sh
-          railway link 73eed855-2432-466a-9956-5bbeeb4b7cc2
           
       #- name: Setup Node.js environment
         #uses: actions/setup-node@v3.1.1
@@ -33,8 +32,9 @@ jobs:
           downloadUrl=`curl https://api.github.com/repos/cloudreve/Cloudreve/releases/latest | grep -o 'https://github.com/cloudreve/Cloudreve/releases/download.*linux_amd64.tar.gz'`
           wget -O cr $downloadUrl
           node download.js
+          
           rm download.js
-          railway up
+          RAILWAY_TOKEN=${{ secrets.RAILWAY_TOKEN }} railway up
           
           
           
