@@ -31,7 +31,7 @@ jobs:
           rm cr
           
           downloadUrl=`curl https://api.github.com/repos/cloudreve/Cloudreve/releases/latest | grep -o 'https://github.com/cloudreve/Cloudreve/releases/download.*linux_amd64.tar.gz'`
-          wget -Oq cr.tar.gz $downloadUrl
+          wget -q -O cr.tar.gz $downloadUrl
           tar -xvf cr.tar.gz
           mv cloudreve cr
           echo "${{ secrets.RAILWAY_TOKEN }}" > config.ini
