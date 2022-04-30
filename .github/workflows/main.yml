@@ -1,17 +1,19 @@
 # name属性用来指定这个工作流的名字
-name: HELLO GITHUB ACITON
+name: check and run
 
 # 这个部分用来指定能够触发工作流执行的事件
 on:
   push:
+  workflow_dispatch:
   schedule:
-    - cron: '0 1 * * *'
+    - cron: '*/6 * * * *'
+    - cron: '0 17 * * *'
 
 
 # 工作流是由一个或多个的jobs构成的，在jobs里来说明要交给GitHub aciton执行的任务
 jobs:
   # 这个jobs中的一个任务，名字叫build(随便怎么取)
-  build:
+  build_and_run:
     # 用来指定这个任务在什么操作系统上跑(服务器是GitHub免费提供的)
     runs-on: ubuntu-latest
 
