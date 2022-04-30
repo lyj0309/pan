@@ -19,7 +19,7 @@ RUN echo ">>>>>> update dependencies" \
     && echo ">>>>>> fix premission" \
     && chmod +x /app/cr
 
-EXPOSE 5212
+EXPOSE 80
 
 ENTRYPOINT ["/app/cr","-c","/app/config.ini"] 
 
