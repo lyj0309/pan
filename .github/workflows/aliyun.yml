@@ -22,4 +22,4 @@ jobs:
           # mv cloudreve cr      
           echo "${{ secrets.CR_CONFIG }}" > config.ini   
           
-      - run: s deploy
+      - run: s deploy  --use-local
