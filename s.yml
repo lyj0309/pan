@@ -1,0 +1,38 @@
+edition: 1.0.0
+name: compoent-test
+access: 'default'
+services:
+  cn-shanghai-fakev-cloudreve:
+    component: devsapp/fc
+    props:
+      region: cn-shanghai
+      service:
+        logConfig:
+          enableRequestMetrics: true
+          enableInstanceMetrics: true
+          logBeginRule: DefaultRegex
+          project: aliyun-fc-cn-shanghai-0924409f-7d9a-596d-b1e0-af55c75bb46c
+          logstore: function-log
+        role: acs:ram::1837026791437325:role/AliyunFcDefaultRole
+        internetAccess: true
+        name: fakev
+      function:
+        customRuntimeConfig:
+          args:
+            - '-c'
+            - config.ini
+          command:
+            - ./cloudreve
+        handler: index.handler
+        instanceType: e1
+        runtime: custom
+        timeout: 60
+        instanceConcurrency: 20
+        memorySize: 128
+        caPort: 8080
+        environmentVariables: {}
+        internetAccess: true
+        name: cloudreve
+        asyncConfiguration: {}
+        codeUri: ./
+      triggers: []
