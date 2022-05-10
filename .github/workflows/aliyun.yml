@@ -2,24 +2,35 @@ name: deploy aliyun
 
 on:
   push:
+  workflow_dispatch:
+  schedule:
+    - cron: "1 15 * * *"
 
 jobs:
   serverless-devs-cd:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      
+
+      - name: check latest
+        id: get_time
+        run: |
+          t1=`curl https://api.github.com/repos/cloudreve/Cloudreve/releases/latest | jq .created_at` # 获取更新时间
+          t1=${t1:1:10}
+          t2=`date '+%Y-%m-%d'` # 获取今天日期
+          echo "::set-output name=T1::$t1"
+          echo "::set-output name=T2::$t2"
+
       - uses: actions/setup-node@v2
       - run: npm install -g @serverless-devs/s
       - run: s config add --AccessKeyID ${{secrets.AccessKeyID}} --AccessKeySecret ${{secrets.AccessKeySecret}}  --AccountID   ${{secrets.AccountID}}  -a default -f
 
-      -
-        name: download latest
+      - name: deploy
+        if: steps.get_time.outputs.T1==steps.get_time.outputs.T2
         run: |
           downloadUrl=`curl https://api.github.com/repos/cloudreve/Cloudreve/releases/latest | grep -o 'https://github.com/cloudreve/Cloudreve/releases/download.*linux_amd64.tar.gz'`
           wget -q -O cloudreve.tar.gz $downloadUrl
           tar -xvf cloudreve.tar.gz
           # mv cloudreve cr      
-          echo "${{ secrets.CR_CONFIG }}" > config.ini   
-          
-      - run: s deploy  --use-local
+          echo "${{ secrets.CR_CONFIG }}" > config.ini
+          s deploy  --use-local
