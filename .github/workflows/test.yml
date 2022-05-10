@@ -26,4 +26,4 @@ jobs:
           export t1=ff
           echo "::set-output name=T1::$t1"
       - name: testoutput
-          echo '${{ steps.main.outputs.T1 }}'
+         run:  echo '${{ steps.main.outputs.T1 }}'
