@@ -25,5 +25,5 @@ jobs:
           # export t1=`curl https://api.github.com/repos/cloudreve/Cloudreve/releases/latest | jq .created_at`
           export t1=ff
           echo "::set-output name=T1::$t1"
-
-          echo 'ggggg ${{ steps.main.outputs.T1 }}'
+      - name: testoutput
+          echo '${{ steps.main.outputs.T1 }}'
