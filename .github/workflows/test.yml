@@ -24,8 +24,6 @@ jobs:
         run: |
           # export t1=`curl https://api.github.com/repos/cloudreve/Cloudreve/releases/latest | jq .created_at`
           export t1=ff
-          echo 'ggggg ${{ env.t1 }}'
+          echo "::set-output name=T1::$t1"
 
-      - name: testif
-        if: $t1 == ff
-        run: echo 'testif'
+          echo 'ggggg ${{ steps.main.outputs.T1 }}'
