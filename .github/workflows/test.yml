@@ -23,5 +23,5 @@ jobs:
       - name: run
         run: |
           export t1=`curl https://api.github.com/repos/cloudreve/Cloudreve/releases/latest | jq .created_at`
-          echo '${{ env.t1 }}'
+          echo 'ggggg ${{ env.t1 }}'
 
