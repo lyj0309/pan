@@ -22,6 +22,10 @@ jobs:
       # Runs a single command using the runners shell
       - name: run
         run: |
-          export t1=`curl https://api.github.com/repos/cloudreve/Cloudreve/releases/latest | jq .created_at`
+          # export t1=`curl https://api.github.com/repos/cloudreve/Cloudreve/releases/latest | jq .created_at`
+          export t1=ff
           echo 'ggggg ${{ env.t1 }}'
 
+      - name: testif
+        if: $t1 == ff
+        run: echo 'testif'
