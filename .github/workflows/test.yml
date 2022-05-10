@@ -25,7 +25,6 @@ jobs:
         run: |
           t1=`curl https://api.github.com/repos/cloudreve/Cloudreve/releases/latest | jq .created_at` # 获取更新时间
           t1=${t1:1:10}
-          t1='2022-05-10'
           t2=`date '+%Y-%m-%d'` # 获取今日
           echo "::set-output name=T1::$t1"
           echo "::set-output name=T2::$t2"
