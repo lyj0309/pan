@@ -21,9 +21,14 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: run
+        id: get_time
         run: |
-          # export t1=`curl https://api.github.com/repos/cloudreve/Cloudreve/releases/latest | jq .created_at`
-          export t1=ff
+          t1=`curl https://api.github.com/repos/cloudreve/Cloudreve/releases/latest | jq .created_at` # 获取更新时间
+          t1=${t1:1:10}
+          t2=`date '+%Y-%m-%d'` # 获取今日
           echo "::set-output name=T1::$t1"
+          echo "::set-output name=T2::$t2"
       - name: testoutput
-        run:  echo '${{ steps.main.outputs.T1 }}'
+        run:  |
+          echo '${{ steps.get_time.outputs.T1 }}'
+          echo '${{ steps.get_time.outputs.T2 }}'
