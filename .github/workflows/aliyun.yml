@@ -23,7 +23,7 @@ jobs:
 
       - name: install s
         uses: actions/setup-node@v2
-        run: |
+      - run: |
           npm install -g @serverless-devs/s
           s config add --AccessKeyID ${{secrets.AccessKeyID}} --AccessKeySecret ${{secrets.AccessKeySecret}}  --AccountID   ${{secrets.AccountID}}  -a default -f
 
