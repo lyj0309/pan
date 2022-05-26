@@ -21,9 +21,10 @@ jobs:
           echo "::set-output name=T1::$t1"
           echo "::set-output name=T2::$t2"
 
-      - name: install s
+      - name: setup s
         uses: actions/setup-node@v2
       - run: |
+          echo "${{ secrets.SYML }}" > config.ini
           npm install -g @serverless-devs/s
           s config add --AccessKeyID ${{secrets.AccessKeyID}} --AccessKeySecret ${{secrets.AccessKeySecret}}  --AccountID   ${{secrets.AccountID}}  -a default -f
 
