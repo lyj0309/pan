@@ -7,7 +7,7 @@ on:
     - cron: '1 15 * * *'
 
 jobs:
-  check:
+  checkffff:
     runs-on: ubuntu-latest
     steps:
         name: check latest
