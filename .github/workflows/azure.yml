@@ -20,8 +20,9 @@ jobs:
                echo "new_release=no" >> $GITHUB_ENV
           fi
   work:
-    if: ${{ env.new_release == 'yes'  }}
     needs: check
+    if: ${{ env.new_release == 'yes'  }}
+    steps:
       -
         name: Checkout
         uses: actions/checkout@v3          
