@@ -7,7 +7,8 @@ on:
     - cron: '1 15 * * *'
 
 jobs:
-  serverless-devs-cd:
+  check:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+        run: |
+          n=`date -d "1 day ago" "+%Y-%m-%d"`
