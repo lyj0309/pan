@@ -25,7 +25,7 @@ jobs:
   work:
     needs: check
     runs-on: ubuntu-latest
-    if: ${{ needs.check.outputs.new_release == 'yes'  }}
+    if: ${{ needs.check.outputs.new_release == 'yes' || github.event_name != 'schedule'  }}
     steps:
       -
         name: Checkout
