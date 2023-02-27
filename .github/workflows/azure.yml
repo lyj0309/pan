@@ -7,16 +7,7 @@ on:
     - cron: '1 15 * * *'
 
 jobs:
-  checkffff:
+  serverless-devs-cd:
     runs-on: ubuntu-latest
     steps:
-        name: check latest
-      - run: |
-          n=`date -d "1 day ago" "+%Y-%m-%d"`
-          l=`wget -qO- -t1 -T2 "https://api.github.com/repos/naiba/nezha/releases/latest" | jq -r ".published_at"`
-          if [[ $l =~ $n ]]
-          then
-               echo "new_release=yes" >> $GITHUB_ENV
-          else
-               echo "new_release=no" >> $GITHUB_ENV
-          fi
+      - uses: actions/checkout@v3
