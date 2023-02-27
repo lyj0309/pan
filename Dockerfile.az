@@ -1,0 +1,6 @@
+FROM cloudreve/cloudreve
+
+COPY config.ini /home/config.ini
+ENTRYPOINT ["./cloudreve","-c","/home/config.ini"]
+
+
