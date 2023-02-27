@@ -21,6 +21,7 @@ jobs:
           fi
   work:
     needs: check
+    runs-on: ubuntu-latest
     if: ${{ env.new_release == 'yes'  }}
     steps:
       -
