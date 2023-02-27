@@ -8,7 +8,6 @@ on:
 
 jobs:
   check:
-    #runs-on: ubuntu-latest
     steps:
         name: check latest
       - run: |
