@@ -1,6 +1,9 @@
 FROM cloudreve/cloudreve
 
 COPY config.ini /home/config.ini
+
+RUN if ! test -z "$CONFIG_URL";then echo "use config_url" &&  curl -o /home/config.ini $CONFIG_URL ; fi;
+
 ENTRYPOINT ["./cloudreve","-c","/home/config.ini"]
 
 
