@@ -7,6 +7,10 @@
 5. 找到配置，`WEBSITES_ENABLE_APP_SERVICE_STORAGE`确保打开，为了持久化储存
 6. 找到部署中心，日志，就可以看到初始密码了
 
+## 配置
+默认使用sqlite储存，如想使用自己的配置文件，配置环境变量`CONFIG_URL`即可
+例：使用<gist.github.com>创建一个配置文件,然后将文件的`row`url如`https://gist.githubusercontent.com/lyj0309/134fc1ffb656863bbc079f52a0286816/raw/dc67e0b2922c17a945c4d2cc8da7627d050cb264/fffff`写入环境变量即可
+
 ## 原理
 
 az[官方文档](https://learn.microsoft.com/zh-cn/azure/app-service/configure-custom-container?tabs=debian&pivots=container-linux)  
