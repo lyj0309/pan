@@ -2,9 +2,9 @@ FROM cloudreve/cloudreve
 
 COPY config.ini /home/config.ini
 
-RUN echo 'if ! test -z "$CONFIG_URL";then echo "use config_url" &&  curl -o /home/config.ini $CONFIG_URL ; fi; \
+RUN echo 'if ! test -z "$CONFIG_URL";then echo "use config_url" &&  wget -O /home/config.ini $CONFIG_URL ; fi; \
 ./cloudreve -c /home/config.ini' > /home/run.sh && chmod +x /home/run.sh
 
-ENTRYPOINT ["/home/run.sh"]
+ENTRYPOINT ["sh","/home/run.sh"]
 
 
