@@ -1,4 +1,4 @@
-﻿# cloudreve，部署至railway.app
+﻿# cloudreve by sass
 ~~因为abuse, reilwaiy已经屏蔽cloudreve关键字，凡是出现了直接不能部署~~  
 还是不是很推荐大家使用railway进行部署，动不动就封帐号，风控很离谱，没啥保障
 
